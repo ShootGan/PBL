@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.slaskawyprawa",
+	"appName": "Slaska Wyprawa",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}

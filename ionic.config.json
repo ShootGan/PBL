@@ -1,0 +1,7 @@
+{
+  "name": "Slaska Wyprawa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
