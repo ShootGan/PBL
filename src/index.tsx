@@ -1,11 +1,11 @@
 import { StrictMode } from "react";
 import { render } from "react-dom";
-import App from "./components/App/App";
+import App from "~components/App/App";
+import { WebVitalsImport } from "~types/imports";
 
 if (process.env.DEVELOPMENT) {
-  const { getLCP, getFID, getCLS, getFCP, getTTFB } = await import(
-    "web-vitals"
-  );
+  const { getLCP, getFID, getCLS, getFCP, getTTFB }: WebVitalsImport =
+    await import("web-vitals");
   // eslint-disable-next-line no-console
   getLCP(console.log);
   // eslint-disable-next-line no-console
@@ -18,7 +18,7 @@ if (process.env.DEVELOPMENT) {
   getTTFB(console.log);
 }
 
-const root = document.querySelector("#root");
+const root: HTMLElement | null = document.querySelector("#root");
 
 render(
   <StrictMode>

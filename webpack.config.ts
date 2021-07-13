@@ -117,6 +117,9 @@ const setupConfig = (
           ),
           "~root": path.join(__dirname, srcFolder),
           "~components": path.join(__dirname, srcFolder, "components"),
+          "~pages": path.join(__dirname, srcFolder, "pages"),
+          "~stores/*": path.join(__dirname, srcFolder, "stores"),
+          "~types/*": path.join(__dirname, srcFolder, "types"),
         },
       },
       experiments: {
@@ -126,7 +129,7 @@ const setupConfig = (
       plugins: [
         new UnusedWebpackPlugin({
           directories: [path.join(__dirname, "src")],
-          exclude: ["*.test.ts", "*.test.tsx", "setupTests.ts"],
+          exclude: ["*.test.ts", "*.test.tsx", "setupTests.ts", "types"],
           root: __dirname,
         }),
         new ScriptExtHtmlWebpackPlugin({

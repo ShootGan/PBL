@@ -36,7 +36,8 @@
       "~root/*": ["./*"],
       "~pages/*": ["./pages/*"],
       "~components/*": ["./components/*"],
-      "~stores/*": ["./stores/*"]
+      "~stores/*": ["./stores/*"],
+      "~types/*": ["./types/*"],
     }
   },
   "include": ["./src"],
