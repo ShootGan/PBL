@@ -115,6 +115,7 @@ const setupConfig = (
             "@babel",
             "runtime",
           ),
+          "querystring": path.resolve(__dirname, "node_modules", "querystring"), 
           "~root": path.join(__dirname, srcFolder),
           "~components": path.join(__dirname, srcFolder, "components"),
           "~pages": path.join(__dirname, srcFolder, "pages"),
