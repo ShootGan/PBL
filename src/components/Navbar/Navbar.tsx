@@ -1,6 +1,6 @@
 import { FC } from "react";
-import NavbarTitle from "~components/NavbarTitle/NavbarTitle";
-import NavbarWrapper from "~components/NavbarWrapper/NavbarWrapper";
+import NavbarTitle from "~root/components/Navbar/NavbarTitle";
+import NavbarWrapper from "~root/components/Navbar/NavbarWrapper";
 
 const Navbar: FC = (): JSX.Element => {
   return (

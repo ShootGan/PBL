@@ -2,5 +2,9 @@
 	"appId": "io.ionic.slaskawyprawa",
 	"appName": "Slaska Wyprawa",
 	"webDir": "dist",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": true,
+	"server": {
+		"url": "http://192.168.0.200:8080",
+		"cleartext": true
+	}
 }
