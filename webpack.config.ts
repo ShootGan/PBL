@@ -64,6 +64,10 @@ const setupConfig = (
             use: ["source-map-loader"],
           },
           {
+            test: /\.css$/,
+            use: ["style-loader", "css-loader"],
+          },
+          {
             test: /\.(ts|tsx)$/,
             include: path.join(__dirname, "src"),
             use: [
@@ -115,7 +119,7 @@ const setupConfig = (
             "@babel",
             "runtime",
           ),
-          "querystring": path.resolve(__dirname, "node_modules", "querystring"), 
+          querystring: path.resolve(__dirname, "node_modules", "querystring"),
           "~root": path.join(__dirname, srcFolder),
           "~components": path.join(__dirname, srcFolder, "components"),
           "~pages": path.join(__dirname, srcFolder, "pages"),

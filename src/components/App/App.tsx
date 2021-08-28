@@ -1,11 +1,12 @@
 import { FC } from "react";
-import Navbar from "~components/Navbar/Navbar";
+import AppProvider from "~components/AppProvider/AppProvider";
+import AppWrapper from "~components/AppWrapper/AppWrapper";
 
 const App: FC = (): JSX.Element => {
   return (
-    <div>
-      <Navbar />
-    </div>
+    <AppProvider>
+      <AppWrapper />
+    </AppProvider>
   );
 };
 
