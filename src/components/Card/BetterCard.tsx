@@ -20,6 +20,11 @@ type FixedDistance = {
   unit: string;
 };
 
+/**
+ * @param root0
+ * @param root0.place
+ * @param root0.currentLocation
+ */
 export default function BetterCard({ place, currentLocation }: CardProperties) {
   return (
     <Card>
