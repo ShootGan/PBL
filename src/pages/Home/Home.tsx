@@ -4,7 +4,7 @@ import Page from "~root/components/Page/Page";
 import placesStore from "~root/stores/PlacesStore/PlacesStore";
 import { Geolocation } from "@capacitor/geolocation";
 import { useEffect } from "react";
-import BetterCard from "~root/components/Card/BetterCard";
+
 export type Coordinates = { latitude: number; longitude: number };
 const Home = () => {
   const currentLocationState = useState<null | Coordinates>(null);
@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <Page title="strona główna">
       {placesState.get().map((place) => (
-        <BetterCard
+        <Card
           key={place.id}
           place={place}
           currentLocation={currentLocationState.get()}

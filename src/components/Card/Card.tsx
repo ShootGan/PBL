@@ -1,23 +1,11 @@
-import {
-  IonButton,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonContent,
-  IonIcon,
-  IonItem,
-  IonLabel,
-} from "@ionic/react";
-import IonicCard from "~root/components/IonicCard/IonicCard";
-import IonicContent from "~root/components/IonicContent/IonicContent";
 import { useState } from "@hookstate/core";
 import placesStore, { Place } from "~root/stores/PlacesStore/PlacesStore";
 import { Coordinates } from "~root/pages/Home/Home";
 import { getDistance } from "geolib";
 import convert from "convert-units";
 import { useEffect } from "react";
+import CardWrapper from "./CardWrapper";
+import CardImage from "./CaredImage";
 
 interface CardProperties {
   place: Place;
@@ -56,23 +44,20 @@ const Card = ({ place, currentLocation }: CardProperties) => {
     }
   }, [currentLocation, place]);
   return (
-    <IonicContent>
-      <IonicCard>
-        <img src={place.imageURL} alt={place.name} />
-        <IonCardHeader>
-          <IonCardTitle>{place.name}</IonCardTitle>
-          <IonCardSubtitle>
-            {fixedDistanceState.get()
-              ? `${fixedDistanceState.get()!.value}${
-                  fixedDistanceState.get()!.unit
-                }`
-              : "Ładowanie odległości"}
-          </IonCardSubtitle>
-        </IonCardHeader>
+    <CardWrapper>
+      <CardImage src={place.imageURL} alt={place.name} />
 
-        <IonCardContent>{place.description}</IonCardContent>
-      </IonicCard>
-    </IonicContent>
+      <h1>{place.name}</h1>
+      <h5>
+        {fixedDistanceState.get()
+          ? `${fixedDistanceState.get()!.value}${
+              fixedDistanceState.get()!.unit
+            }`
+          : "Ładowanie odległości"}
+      </h5>
+
+      <p>{place.description.slice(0, 300) + "..."}</p>
+    </CardWrapper>
   );
 };
 
