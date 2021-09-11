@@ -6,6 +6,7 @@ import convert from "convert-units";
 import { useEffect } from "react";
 import CardWrapper from "./CardWrapper";
 import CardImage from "./CaredImage";
+import { useQuery } from "react-query";
 
 interface CardProperties {
   place: Place;
@@ -27,11 +28,11 @@ const Card = ({ place, currentLocation }: CardProperties) => {
           longitude: currentLocation.longitude.toFixed(3),
         },
         {
-          latitude: place.latitude.toFixed(3),
-          longitude: place.longitude.toFixed(3),
+          latitude: place.Latitude.toFixed(3),
+          longitude: place.Longitude.toFixed(3),
         },
       );
-      console.log(calculatedDistance);
+
       const { val, unit } = convert(calculatedDistance)
         .from("m")
         .toBest({
@@ -43,11 +44,24 @@ const Card = ({ place, currentLocation }: CardProperties) => {
       });
     }
   }, [currentLocation, place]);
+
+  const { data, isLoading } = useQuery(
+    ["location", place.ObjectId],
+    async () => {
+      const response = await fetch(
+        `http://localhost:8000/osm/address/${place.ObjectId}`,
+      );
+      const dataa = await response.json();
+      console.log(dataa);
+      return dataa;
+    },
+  );
   return (
     <CardWrapper>
-      <CardImage src={place.imageURL} alt={place.name} />
+      <CardImage src={place.ImagePath} alt={place.Name} />
 
-      <h1>{place.name}</h1>
+      <h1>{place.Name}</h1>
+      <h5>{data ? data._json[0].address.city : "ni ma miasta"}</h5>
       <h5>
         {fixedDistanceState.get()
           ? `${fixedDistanceState.get()!.value}${
@@ -56,7 +70,7 @@ const Card = ({ place, currentLocation }: CardProperties) => {
           : "Ładowanie odległości"}
       </h5>
 
-      <p>{place.description.slice(0, 300) + "..."}</p>
+      <p>{place.Description.slice(0, 300) + "..."}</p>
     </CardWrapper>
   );
 };
