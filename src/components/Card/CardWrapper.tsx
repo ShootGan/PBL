@@ -9,8 +9,8 @@ const CardWrapper = styled.div`
   text-align: center;
   border-radius: 10px;
   background-color: lightgray;
-  margin-left: 5%;
-  margin-bottom: 5%;
+  justify-content: center;
+  margin: 0 auto 15px auto;
 `;
 
 export default CardWrapper;

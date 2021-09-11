@@ -7,6 +7,10 @@ import { useEffect } from "react";
 import CardWrapper from "./CardWrapper";
 import CardImage from "./CaredImage";
 import { useQuery } from "react-query";
+import CardParagraph from "./CardParagraph";
+import CardHeading1 from "./CardHeading1";
+import CardHeading5 from "./CardHeading5";
+
 
 interface CardProperties {
   place: Place;
@@ -60,17 +64,21 @@ const Card = ({ place, currentLocation }: CardProperties) => {
     <CardWrapper>
       <CardImage src={place.ImagePath} alt={place.Name} />
 
-      <h1>{place.Name}</h1>
-      <h5>{data ? data._json[0].address.city : "ni ma miasta"}</h5>
-      <h5>
+
+      <CardHeading1>{place.Name}</CardHeading1>
+       <CardHeading5>{data ? data._json[0].address.city : "ni ma miasta"}</CardHeading5>
+      <CardHeading5>
+
         {fixedDistanceState.get()
           ? `${fixedDistanceState.get()!.value}${
               fixedDistanceState.get()!.unit
             }`
           : "Ładowanie odległości"}
-      </h5>
+      </CardHeading5>
 
-      <p>{place.Description.slice(0, 300) + "..."}</p>
+
+      <CardParagraph>{place.Description.slice(0, 300) + "..."}</CardParagraph>
+
     </CardWrapper>
   );
 };
