@@ -6,6 +6,9 @@ import convert from "convert-units";
 import { useEffect } from "react";
 import CardWrapper from "./CardWrapper";
 import CardImage from "./CaredImage";
+import CardParagraph from "./CardParagraph";
+import CardHeading1 from "./CardHeading1";
+import CardHeading5 from "./CardHeading5";
 
 interface CardProperties {
   place: Place;
@@ -47,16 +50,16 @@ const Card = ({ place, currentLocation }: CardProperties) => {
     <CardWrapper>
       <CardImage src={place.imageURL} alt={place.name} />
 
-      <h1>{place.name}</h1>
-      <h5>
+      <CardHeading1>{place.name}</CardHeading1>
+      <CardHeading5>
         {fixedDistanceState.get()
           ? `${fixedDistanceState.get()!.value}${
               fixedDistanceState.get()!.unit
             }`
           : "Ładowanie odległości"}
-      </h5>
+      </CardHeading5>
 
-      <p>{place.description.slice(0, 300) + "..."}</p>
+      <CardParagraph>{place.description.slice(0, 300) + "..."}</CardParagraph>
     </CardWrapper>
   );
 };
