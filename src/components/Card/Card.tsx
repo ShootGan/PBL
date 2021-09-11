@@ -11,7 +11,6 @@ import CardParagraph from "./CardParagraph";
 import CardHeading1 from "./CardHeading1";
 import CardHeading5 from "./CardHeading5";
 
-
 interface CardProperties {
   place: Place;
   currentLocation: null | Coordinates;
@@ -64,11 +63,11 @@ const Card = ({ place, currentLocation }: CardProperties) => {
     <CardWrapper>
       <CardImage src={place.ImagePath} alt={place.Name} />
 
-
       <CardHeading1>{place.Name}</CardHeading1>
-       <CardHeading5>{data ? data._json[0].address.city : "ni ma miasta"}</CardHeading5>
       <CardHeading5>
-
+        {data ? data._json[0].address.city : "ni ma miasta"}
+      </CardHeading5>
+      <CardHeading5>
         {fixedDistanceState.get()
           ? `${fixedDistanceState.get()!.value}${
               fixedDistanceState.get()!.unit
@@ -76,9 +75,7 @@ const Card = ({ place, currentLocation }: CardProperties) => {
           : "Ładowanie odległości"}
       </CardHeading5>
 
-
       <CardParagraph>{place.Description.slice(0, 300) + "..."}</CardParagraph>
-
     </CardWrapper>
   );
 };
