@@ -6,6 +6,7 @@ const CardHeading5 = styled.h1`
   font-weight: bold;
   margin: 5px 5px 5px 5px;
   font-family: "Roboto", sans-serif;
+  text-align: left;
 `;
 
 export default CardHeading5;

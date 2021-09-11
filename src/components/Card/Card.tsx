@@ -52,7 +52,7 @@ const Card = ({ place, currentLocation }: CardProperties) => {
     ["location", place.ObjectId],
     async () => {
       const response = await fetch(
-        `http://localhost:8000/osm/address/${place.ObjectId}`,
+        `http://localhost:8000/osm/city/${place.ObjectId}`,
       );
       const dataa = await response.json();
       console.log(dataa);
@@ -65,13 +65,13 @@ const Card = ({ place, currentLocation }: CardProperties) => {
 
       <CardHeading1>{place.Name}</CardHeading1>
       <CardHeading5>
-        {data ? data._json[0].address.city : "ni ma miasta"}
+        {data ? (data.city ? data.city : data.town) : "ni ma miasta"}
       </CardHeading5>
       <CardHeading5>
         {fixedDistanceState.get()
           ? `${fixedDistanceState.get()!.value}${
               fixedDistanceState.get()!.unit
-            }`
+            } stąd`
           : "Ładowanie odległości"}
       </CardHeading5>
 
