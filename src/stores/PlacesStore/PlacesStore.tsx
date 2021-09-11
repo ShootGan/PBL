@@ -1,20 +1,33 @@
 import { createState } from "@hookstate/core";
 
 export type Place = {
-  name: string;
-  id: number;
-  description: string;
-  imageURL: string;
-  Gmap: string;
-  longitude: number;
-  latitude: number;
-  freeParking: boolean | null;
-  freeEntry: boolean;
-  EasyAcces: boolean;
+  ObjectId: number;
+  Name: string;
+  Description: string;
+  ImagePath: string;
+  Longitude: number;
+  Latitude: number;
 };
 
-const getPlaces = (): Place[] => {
-  return [
+const getPlaces = async (): Promise<Place[]> => {
+  try {
+    const response = await fetch(
+      "http://localhost:8000/place/?offset=0&limit=30",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      },
+    );
+    return await response.json();
+  } catch {
+    return new Promise((resolve) => {
+      resolve([]);
+    });
+  }
+
+  /*return [
     {
       id: 1,
       name: "Sztolnia Królowa Luiza - Zabrze",
@@ -42,9 +55,9 @@ const getPlaces = (): Place[] => {
       freeEntry: true,
       EasyAcces: false,
     },
-  ];
+  ];*/
 };
 
-const placesStore = createState(getPlaces());
+const placesStore = createState(await getPlaces());
 
 export default placesStore;
