@@ -22,7 +22,7 @@ const Home = () => {
     <Page title="strona główna">
       {placesState.get().map((place) => (
         <Card
-          key={place.id}
+          key={place.ObjectId}
           place={place}
           currentLocation={currentLocationState.get()}
         />
