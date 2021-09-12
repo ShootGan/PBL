@@ -52,7 +52,7 @@ const Card = ({ place, currentLocation }: CardProperties) => {
     ["location", place.ObjectId],
     async () => {
       const response = await fetch(
-        `http://localhost:8000/osm/city/${place.ObjectId}`,
+        `https://slaska-wyprawa-backend.herokuapp.com/osm/city/${place.ObjectId}`,
       );
       const dataa = await response.json();
       console.log(dataa);
