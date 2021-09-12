@@ -3,10 +3,11 @@ import styled from "@emotion/styled";
 const CardParagraph = styled.p`
   display: block;
   margin: 5px 5px 5px 5px;
-  text-align: center;
   font-family: "Roboto";
-  font-weight: 600;
+  font-weight: 300;
   padding: 10px;
+  text-justify: inter-character;
+  text-align: justify;
 `;
 
 export default CardParagraph;
