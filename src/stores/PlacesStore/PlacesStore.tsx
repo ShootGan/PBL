@@ -12,7 +12,7 @@ export type Place = {
 const getPlaces = async (): Promise<Place[]> => {
   try {
     const response = await fetch(
-      "http://localhost:8000/place/?offset=0&limit=30",
+      "https://slaska-wyprawa-backend.herokuapp.com/place/?offset=0&limit=30",
       {
         headers: {
           "Content-Type": "application/json",
