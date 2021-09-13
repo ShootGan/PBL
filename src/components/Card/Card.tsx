@@ -1,4 +1,5 @@
 import { useState } from "@hookstate/core";
+import { useHistory } from "react-router-dom";
 import placesStore, { Place } from "~root/stores/PlacesStore/PlacesStore";
 import { Coordinates } from "~root/pages/Home/Home";
 import { getDistance } from "geolib";
@@ -22,6 +23,7 @@ type FixedDistance = {
 };
 
 const Card = ({ place, currentLocation }: CardProperties) => {
+  const history = useHistory();
   const fixedDistanceState = useState<null | FixedDistance>(null);
   useEffect(() => {
     if (currentLocation && place) {
@@ -76,6 +78,9 @@ const Card = ({ place, currentLocation }: CardProperties) => {
       </CardHeading5>
 
       <CardParagraph>{place.Description.slice(0, 300) + "..."}</CardParagraph>
+      <CardHeading5 onClick={() => history.push(`/location/${place.ObjectId}`)}>
+        Więcej
+      </CardHeading5>
     </CardWrapper>
   );
 };
