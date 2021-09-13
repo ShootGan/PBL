@@ -26,7 +26,14 @@ const Facilities = ({ objectId }: number) => {
 
   return (
     <div>
-      <ul></ul>
+      {disabilitiesData?.DisabilitiesList &&
+        disabilitiesData.DisabilitiesList.map((element, index) => {
+          return <div key={index}>{element}</div>;
+        })}
+      {disabilitiesData?.DiscountList &&
+        disabilitiesData.DiscountList.map((element, index) => {
+          return <div key={index}>{element}</div>;
+        })}
     </div>
   );
 };

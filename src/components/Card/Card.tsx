@@ -67,7 +67,7 @@ const Card = ({ place, currentLocation }: CardProperties) => {
 
       <CardHeading1>{place.Name}</CardHeading1>
       <CardHeading5>
-        {data ? (data.city ? data.city : data.town) : "ni ma miasta"}
+        {data ? (data.city ? data.city : data.town) : " "}
       </CardHeading5>
       <CardHeading5>
         {fixedDistanceState.get()

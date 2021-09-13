@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import Page from "~root/components/Page/Page";
 import FreeThings from "~root/components/FreeThings/FreeThings";
 import Facilities from "~root/components/Facilities/Facilities";
+import AddresInfo from "~root/components/AddresInfo/AddresInfo";
 interface PlaceProperties {
   match: any;
 }
@@ -18,10 +19,11 @@ const Location = ({ match }: PlaceProperties) => {
     },
   );
   console.log(locationData);
-  return locationData ? (
-    <Page title="siema">
+  return !locationIssLoading && locationData ? (
+    <Page title={locationData.Name}>
       <img src={locationData.ImagePath} alt={locationData.Name} />
       <h1>{locationData.Name}</h1>
+      <AddresInfo objectId={locationData.ObjectId} />
       <FreeThings
         freeParking={locationData.FreeParking}
         freeEntry={locationData.FreeEntry}
