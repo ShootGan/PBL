@@ -11,6 +11,7 @@ const CardWrapper = styled.div`
   background-color: lightgray;
   justify-content: center;
   margin: 0 auto 15px auto;
+  font-family: "Roboto", sans-serif;
 `;
 
 export default CardWrapper;
