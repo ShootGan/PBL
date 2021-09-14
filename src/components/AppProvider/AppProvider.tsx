@@ -2,7 +2,7 @@ import { FC, ReactNode } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter } from "react-router-dom";
-const queryClient = new QueryClient();
+const queryClient: QueryClient = new QueryClient();
 interface AppProviderProperties {
   children: ReactNode;
 }

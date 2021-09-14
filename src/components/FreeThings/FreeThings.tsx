@@ -1,15 +1,15 @@
-import { useState } from "@hookstate/core";
+import { FC } from "react";
 
 interface FreeThingsProperties {
   freeParking: null | boolean;
   freeEntry: boolean;
   easyAcces: boolean;
 }
-const FreeThings = ({
+const FreeThings: FC<FreeThingsProperties> = ({
   freeParking,
   freeEntry,
   easyAcces,
-}: FreeThingsProperties) => {
+}: FreeThingsProperties): JSX.Element => {
   return (
     <div>
       <ul>
