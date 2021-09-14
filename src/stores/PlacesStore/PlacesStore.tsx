@@ -27,7 +27,7 @@ const getPlaces = async (): Promise<Place[]> => {
     });
   }
 
-  /*return [
+  return [
     {
       id: 1,
       name: "Sztolnia Królowa Luiza - Zabrze",
@@ -55,7 +55,7 @@ const getPlaces = async (): Promise<Place[]> => {
       freeEntry: true,
       EasyAcces: false,
     },
-  ];*/
+  ];
 };
 
 const placesStore = createState(await getPlaces());

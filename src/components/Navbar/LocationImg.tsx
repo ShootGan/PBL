@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const CardImage = styled.img`
+const LocationImg = styled.img`
   width: 1000px;
   max-width: 70%;
   height: 40%;
@@ -11,4 +11,4 @@ const CardImage = styled.img`
   margin-right: auto;
   align-items: center;
 `;
-export default CardImage;
+export default LocationImg;

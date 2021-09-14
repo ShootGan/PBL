@@ -19,7 +19,7 @@ const Home = () => {
   }, []);
   const placesState = useState(placesStore);
   return (
-    <Page title="strona główna">
+    <Page title="Strona główna">
       {placesState.get().map((place) => (
         <Card
           key={place.ObjectId}
