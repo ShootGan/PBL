@@ -1,21 +1,23 @@
 import { FC } from "react";
-import { useQuery } from "react-query";
+import { useQuery, UseQueryResult } from "react-query";
+
 interface AddresInfoProperties {
   objectId: number;
 }
+
 const AddresInfo: FC<AddresInfoProperties> = ({
   objectId,
 }: AddresInfoProperties): JSX.Element => {
-  console.log(objectId);
-  const { data, isLoading } = useQuery(["location", objectId], async () => {
-    const response = await fetch(
-      `https://slaska-wyprawa-backend.herokuapp.com/osm/city/${objectId}`,
-    );
-    const dataa = await response.json();
-    console.log(dataa);
-    return dataa;
-  });
-  console.log(data);
+  const { data, isLoading }: UseQueryResult<any, Error> = useQuery(
+    ["location", objectId],
+    async (): Promise<any> => {
+      const response: Response = await fetch(
+        `https://slaska-wyprawa-backend.herokuapp.com/osm/city/${objectId}`,
+      );
+      return await response.json();
+    },
+  );
+
   return !isLoading && data ? (
     <h3>{`${data.city ? data.city : data.town} ul  ${data.road} ${
       data.house_number ? data.house_number : ""

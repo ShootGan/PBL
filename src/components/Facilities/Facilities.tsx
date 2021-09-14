@@ -1,39 +1,54 @@
-import { useQuery } from "react-query";
+import { FC } from "react";
+import { useQuery, UseQueryResult } from "react-query";
 
-const Facilities = ({ objectId }: number) => {
-  const { data: disabilitiesData, isLoading: disabilitiesIsLoading } = useQuery(
+interface FacilitiesProperties {
+  objectId: number;
+}
+
+const Facilities: FC<FacilitiesProperties> = ({
+  objectId,
+}: FacilitiesProperties): JSX.Element => {
+  const {
+    data: disabilitiesData,
+    isLoading: disabilitiesIsLoading,
+  }: UseQueryResult<any, Error> = useQuery(
     ["disabilitiesData", objectId],
-    async () => {
+    async (): Promise<any> => {
       const response = await fetch(
         `https://slaska-wyprawa-backend.herokuapp.com/disabilities/${objectId}`,
       );
-      const dataa = await response.json();
-      console.log(dataa);
-      return dataa;
+      return await response.json();
     },
   );
-  const { data: discountData, isLoading: discountIsLoading } = useQuery(
+
+  const {
+    data: discountData,
+    isLoading: discountIsLoading,
+  }: UseQueryResult<any, Error> = useQuery(
     ["discounnData", objectId],
-    async () => {
+    async (): Promise<any> => {
       const response = await fetch(
         `https://slaska-wyprawa-backend.herokuapp.com/discount/${objectId}`,
       );
-      const dataa = await response.json();
-      console.log(dataa);
-      return dataa;
+
+      return await response.json();
     },
   );
 
   return (
     <div>
       {disabilitiesData?.DisabilitiesList &&
-        disabilitiesData.DisabilitiesList.map((element, index) => {
-          return <div key={index}>{element}</div>;
-        })}
-      {disabilitiesData?.DiscountList &&
-        disabilitiesData.DiscountList.map((element, index) => {
-          return <div key={index}>{element}</div>;
-        })}
+        disabilitiesData.DisabilitiesList.map(
+          (element: string | number, index: number): JSX.Element => {
+            return <div key={index}>{element}</div>;
+          },
+        )}
+      {discountData?.DiscountList &&
+        discountData.DiscountList.map(
+          (element: string | number, index: number): JSX.Element => {
+            return <div key={index}>{element}</div>;
+          },
+        )}
     </div>
   );
 };
