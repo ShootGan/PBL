@@ -19,9 +19,9 @@ const AddresInfo: FC<AddresInfoProperties> = ({
   );
 
   return !isLoading && data ? (
-    <h1>{`${data.city ? data.city : data.town} ul  ${data.road} ${
+    <h3>{`${data.city ? data.city : data.town} ul  ${data.road} ${
       data.house_number ? data.house_number : ""
-    }`}</h1>
+    }`}</h3>
   ) : (
     <h1>nie działa</h1>
   );
