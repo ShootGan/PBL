@@ -1,9 +1,7 @@
 import styled from "@emotion/styled";
 import { SC } from "~root/types/components";
 
-
 const CardWrapper: SC<HTMLDivElement> = styled.div`
-  
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 9);
   transition: 0.3s;
   width: 90%;

@@ -9,9 +9,11 @@ export type Place = {
   Latitude: number;
 };
 
-const getPlaces = async (): Promise<Place[]> => {
+type GetPlaces = () => Promise<Place[]>;
+
+const getPlaces: GetPlaces = async (): Promise<Place[]> => {
   try {
-    const response = await fetch(
+    const response: Response = await fetch(
       "https://slaska-wyprawa-backend.herokuapp.com/place/?offset=0&limit=30",
       {
         headers: {
@@ -22,9 +24,11 @@ const getPlaces = async (): Promise<Place[]> => {
     );
     return await response.json();
   } catch {
-    return new Promise((resolve) => {
-      resolve([]);
-    });
+    return new Promise(
+      (resolve: (value: Place[] | PromiseLike<Place[]>) => void): void => {
+        resolve([]);
+      },
+    );
   }
 
   /*return [
