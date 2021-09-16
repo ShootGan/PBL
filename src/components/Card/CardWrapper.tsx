@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { SC } from "~root/types/components";
 
-const CardWrapper = styled.div`
+const CardWrapper: SC<HTMLDivElement> = styled.div`
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 9);
   transition: 0.3s;
   display: flex;
@@ -13,6 +14,7 @@ const CardWrapper = styled.div`
   width: 1000px;
   max-width: 70%;
   height: 40%;
-`;
+  font-family: "Roboto", sans-serif;
+
 
 export default CardWrapper;

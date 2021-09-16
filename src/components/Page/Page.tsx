@@ -5,7 +5,10 @@ interface PageProperties {
   title?: string;
 }
 
-const Page: FC<PageProperties> = ({ children, title }: PageProperties) => {
+const Page: FC<PageProperties> = ({
+  children,
+  title,
+}: PageProperties): JSX.Element => {
   const concatTitle: string = title ? ` - ${title}` : "";
   const fixedTitle: string = `Śląska wyprawa${concatTitle}`;
   return (

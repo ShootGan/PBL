@@ -1,13 +1,13 @@
 import { useState } from "@hookstate/core";
 import { useHistory } from "react-router-dom";
-import placesStore, { Place } from "~root/stores/PlacesStore/PlacesStore";
+import { Place } from "~root/stores/PlacesStore/PlacesStore";
 import { Coordinates } from "~root/pages/Home/Home";
 import { getDistance } from "geolib";
 import convert from "convert-units";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import CardWrapper from "./CardWrapper";
 import CardImage from "./CaredImage";
-import { useQuery } from "react-query";
+import { useQuery, UseQueryResult } from "react-query";
 import CardParagraph from "./CardParagraph";
 import CardHeading1 from "./CardHeading1";
 import CardHeading5 from "./CardHeading5";
@@ -22,12 +22,15 @@ type FixedDistance = {
   unit: string;
 };
 
-const Card = ({ place, currentLocation }: CardProperties) => {
+const Card: FC<CardProperties> = ({
+  place,
+  currentLocation,
+}: CardProperties): JSX.Element => {
   const history = useHistory();
   const fixedDistanceState = useState<null | FixedDistance>(null);
   useEffect(() => {
     if (currentLocation && place) {
-      const calculatedDistance = getDistance(
+      const calculatedDistance: number = getDistance(
         {
           latitude: currentLocation.latitude.toFixed(3),
           longitude: currentLocation.longitude.toFixed(3),
@@ -50,15 +53,14 @@ const Card = ({ place, currentLocation }: CardProperties) => {
     }
   }, [currentLocation, place]);
 
-  const { data, isLoading } = useQuery(
+  const { data, isLoading }: UseQueryResult<any, Error> = useQuery(
     ["location", place.ObjectId],
-    async () => {
-      const response = await fetch(
+    async (): Promise<any> => {
+      const response: Response = await fetch(
         `https://slaska-wyprawa-backend.herokuapp.com/osm/city/${place.ObjectId}`,
       );
-      const dataa = await response.json();
-      console.log(dataa);
-      return dataa;
+
+      return await response.json();
     },
   );
   return (
