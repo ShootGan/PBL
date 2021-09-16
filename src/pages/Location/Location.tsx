@@ -43,3 +43,4 @@ const Location = ({ match }: PlaceProperties) => {
 };
 
 export default Location;
+

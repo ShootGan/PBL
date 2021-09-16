@@ -6,9 +6,8 @@ const CardHeading1: SC<HTMLHeadingElement> = styled.h1`
   display: block;
   font-weight: 900;
   padding: 5px;
-  letter-spacing: 1px;
   font-family: "Roboto", sans-serif;
-  font-size: 27px;
+  font-size: 20px;
 `;
 
 export default CardHeading1;

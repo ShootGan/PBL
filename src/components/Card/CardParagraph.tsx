@@ -7,8 +7,9 @@ const CardParagraph: SC<HTMLParagraphElement> = styled.p`
   font-family: "Roboto";
   font-weight: 300;
   padding: 10px;
+  font-size: 2.5vh;
   text-justify: inter-character;
-  text-align: justify;
+  text-align: left;
 `;
 
 export default CardParagraph;
