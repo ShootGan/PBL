@@ -3,10 +3,10 @@ import Card from "~root/components/Card/Card";
 import Page from "~root/components/Page/Page";
 import placesStore from "~root/stores/PlacesStore/PlacesStore";
 import { Geolocation } from "@capacitor/geolocation";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 
 export type Coordinates = { latitude: number; longitude: number };
-const Home = () => {
+const Home: FC = (): JSX.Element => {
   const currentLocationState = useState<null | Coordinates>(null);
   useEffect(() => {
     (async () => {
