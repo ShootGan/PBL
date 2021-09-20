@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery, UseQueryResult } from "react-query";
 import Page from "~root/components/Page/Page";
 import FreeThings from "~root/components/FreeThings/FreeThings";
 import Facilities from "~root/components/Facilities/Facilities";
@@ -6,23 +6,26 @@ import AddresInfo from "~root/components/AddresInfo/AddresInfo";
 import LocationImage from "./LocationImage";
 import CardWrapper from "../../components/Card/CardWrapper";
 import LocationButton from "./LocationButton";
-import { Link } from "react-router-dom";
+
 interface PlaceProperties {
   match: any;
 }
 
-const Location = ({ match }: PlaceProperties) => {
-  const locationId = match.params.objectId;
-  const { data: locationData, isLoading: locationIssLoading } = useQuery(
+const Location = ({ match }: PlaceProperties): JSX.Element => {
+  const locationId: number = match.params.objectId;
+  const {
+    data: locationData,
+    isLoading: locationIssLoading,
+  }: UseQueryResult<any, Error> = useQuery(
     ["locationData", { locationId }],
-    async () => {
-      const response = await fetch(
+    async (): Promise<any> => {
+      const response: Response = await fetch(
         `https://slaska-wyprawa-backend.herokuapp.com/place/${locationId}`,
       );
       return await response.json();
     },
   );
-  console.log(locationData);
+
   return !locationIssLoading && locationData ? (
     <CardWrapper>
       <Page title={locationData.Name}>
