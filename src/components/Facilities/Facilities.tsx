@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { useQuery, UseQueryResult } from "react-query";
-import FacilitiesWrapper from "./FacilitiesWrapper";
 
 interface FacilitiesProperties {
   objectId: number;
