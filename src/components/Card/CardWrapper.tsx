@@ -11,10 +11,9 @@ const CardWrapper: SC<HTMLDivElement> = styled.div`
   background-color: lightgray;
   justify-content: center;
   margin: 0 auto 15px auto;
-  width: 1000px;
-  max-width: 70%;
+  width: 100%;
+  max-width: 90%;
   height: 40%;
   font-family: "Roboto", sans-serif;
-
-
+`;
 export default CardWrapper;

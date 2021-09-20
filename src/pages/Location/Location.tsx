@@ -5,6 +5,8 @@ import Facilities from "~root/components/Facilities/Facilities";
 import AddresInfo from "~root/components/AddresInfo/AddresInfo";
 import LocationImage from "./LocationImage";
 import CardWrapper from "../../components/Card/CardWrapper";
+import LocationButton from "./LocationButton";
+import { Link } from "react-router-dom";
 interface PlaceProperties {
   match: any;
 }
@@ -34,7 +36,9 @@ const Location = ({ match }: PlaceProperties) => {
         />
         <Facilities objectId={locationData.ObjectId} />
         <p>{locationData.Description}</p>
-        <a href={locationData.GMapLink}>NAWIGUJ!</a>
+        <a href={locationData.GMapLink}>
+          <LocationButton>NAWIGUJ!</LocationButton>
+        </a>
       </Page>
     </CardWrapper>
   ) : (
@@ -43,4 +47,3 @@ const Location = ({ match }: PlaceProperties) => {
 };
 
 export default Location;
-
